@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oop</title>
+</head>
+<body>
+    <script> 
+ class Car { 
+    constructor(name,color,price) { 
+        this.name= name;
+        this.color = color;
+        this.price = price;
+    }
+    show() {
+        return this.name +" " +this.color+" is runing"+ " and this car price " + this.price;
+    }
+ }
+
+ let newCar = new Car("Auodi","Gray",23000);
+  a =newCar.show();
+document.write(a);
+
+//  const c = new Car("bmw","blue","23000");
+//  const p=c.run();
+//  const b = new Car("Aoudi","Black","2123000");
+// console.log(c.name)
+// document.write(c.name +" ," + c.color + "," +c.price +"<br>");
+// document.write(b.name +" ," + b.color + " ," +b.price+"<br>");
+// document.write(p);
+
+
+    </script>
+</body>
+</html>

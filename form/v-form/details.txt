@@ -1,0 +1,45 @@
+The code starts by selecting the form element using document.querySelector("form") and assigns it to the form variable. 
+It also selects the password input element with the id "password" and assigns it to the passwordInput variable.
+ Similarly, it selects the password toggle button with the id "pass-toggle-btn" and assigns it to the passToggleBtn variable.
+
+The showError function is defined to display error messages for form fields.
+ It takes two parameters: field, which represents the input field element, and errorText, which represents the error message to be displayed.
+  Inside the function, it adds the "error" class to the field element, 
+  creates a <small> element for the error message assigns it the "error-text" class, 
+  sets the error text as its content, and appends it to the closest ancestor element with the class "form-group".
+
+
+
+What is JavaScript closest() Method?
+The Javascript closest method is used to find the closest parent or ancestor of the element that matches the selector. The javascript closest method takes the selector as the parameter. The closest method in Javascript traverses up the DOM tree from the targetElement until the selector which is passed as the parameter is found.
+ If the selector passed as the parameter is not found, Then the closest method returns NULL.
+
+
+
+
+The handleFormData function is responsible for handling the form submission event. 
+It takes the event object as a parameter and prevents the default form submission behaviour using e.preventDefault().
+
+Inside the function, it retrieves the input elements by their respective ids and assigns their values to variables after trimming any leading or trailing whitespace. It also defines an email pattern using a regular expression for email validation.
+
+Next, it clears any previous error messages by removing the "error" class from all elements with the "form-group" class that have an "error" class and removes all elements with the "error-text" class.
+
+Then, it performs validation checks on the form inputs. If any validation fails, the showError function is called with the corresponding input field and error message as arguments.
+
+After performing all validation checks, it checks if there are any remaining error inputs. If there are, the function returns and the form submission is halted.
+
+If there are no errors, the form is submitted using form.submit().
+
+
+
+// Handling form submission event
+form.addEventListener("submit", handleFormData);
+
+This code adds an event listener to the form's "submit" event. When the form is submitted, 
+it calls the handleFormData function to handle the form submission.
+
+<<<<<<< HEAD
+Overall, this JavaScript code sets up event listeners for form submission, performs form validation, displays error messages, and submits the form if there are no errors.
+=======
+Overall, this JavaScript code sets up event listeners for form submission, performs form validation, displays error messages, and submits the form if there are no errors.
+>>>>>>> 0f0aed4513a4205b4806e1784d3c25cd209313d7

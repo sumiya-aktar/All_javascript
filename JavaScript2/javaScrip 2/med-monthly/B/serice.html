@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let js= prompt("Please Input");
+        let first=0, second=1, nextTram;
+       document.write("the number series :");
+       for(let i=2; i<=js; i++){
+        document.write(first + " ");
+          nextTram=first+second;
+          first=second
+          second=nextTram;
+       };
+    </script>
+</body>
+</html>

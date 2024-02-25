@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: teal;
+        }
+
+        form {
+            width: 400px;
+            height: 630px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: rgb(178, 189, 189);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+        }
+
+        .radio-group, .checkbox-group {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            margin-bottom: 12px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .error {
+            color: red;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<form id="registrationForm">
+    <h2 class="title">Create a new account</h2>
+    <hr>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" placeholder="John Doe" required>
+
+    <label for="address">Address:</label>
+    <input type="text" id="address" name="address" placeholder="Enter your area" required>
+
+    <div class="radio-group">
+        <label>Gender:</label>
+        <div>
+            <input type="radio" id="male" name="gender" value="male" required>
+            <label for="male">Male</label>
+        </div>
+        <div>
+            <input type="radio" id="female" name="gender" value="female" required>
+            <label for="female">Female</label>
+        </div>
+        <div>
+            <input type="radio" id="other" name="gender" value="other" required>
+            <label for="other">Other</label>
+        </div>
+    </div>
+
+    <div class="checkbox-group">
+        <label>Courses:</label>
+        <div>
+            <input type="checkbox" id="wdpf" name="course" value="WDPF">
+            <label for="wdpf">WDPF</label>
+        </div>
+        <div>
+            <input type="checkbox" id="csharp" name="course" value="C#">
+            <label for="csharp">C#</label>
+        </div>
+        <div>
+            <input type="checkbox" id="java" name="course" value="JAVA">
+            <label for="NT">NT</label>
+        </div>
+        <div>
+            <input type="checkbox" id="database" name="course" value="DATABASE">
+            <label for="WDPF">WDPF</label>
+        </div>
+    </div>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="john.doe@example.com" required>
+    <div id="emailError" class="error"></div>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+    <div id="passwordError" class="error"></div>
+
+    <label for="passwordConfirmation">Confirm Password:</label>
+    <input type="password" id="passwordConfirmation" name="passwordConfirmation" placeholder="Enter your password" required>
+    <br>
+    <br>
+    <button type="button" onclick="openDynamicWindow()" style="margin-left: 287px;">Create Account</button>
+    <!-- <div id="errorMessages" class="error"></div -->
+</form>
+<script>
+    class User {
+        constructor(name, address, gender, course, email, password, passwordConfirmation) {
+            this.name = name;
+            this.address = address;
+            this.gender = gender;
+            this.course = course;
+            this.email = email;
+            this.password = password;
+            this.passwordConfirmation = passwordConfirmation;
+            this.errors = [];
+        }
+
+        validateEmail() {
+            // একটি সাধারণ ইমেইল পরীক্ষা করার রেগুলার এক্সপ্রেশন
+            const emailRegex = /\S+@\S+\.\S+/;
+
+            // পরীক্ষা করে দেখা যাবে কি না
+            if (!emailRegex.test(this.email)) {
+                this.errors.push("Invalid email address");
+            }
+        }
+
+        validatePassword() {
+            if (this.password.length < 8) {
+                this.errors.push("Password must be 8 characters long");
+            }
+
+            // অতিরিক্ত শর্তগুলি
+            if (!/[a-zA-Z]/.test(this.password)) {
+                this.errors.push("Password must contain one character");
+            }
+
+            if (!/\d/.test(this.password)) {
+                this.errors.push("Password must contain a number");
+            }
+
+            if (this.password !== this.passwordConfirmation) {
+                this.errors.push("Password and confirmation do not match");
+            }
+        }
+
+        registerUser() {
+            this.errors = [];
+            this.validateEmail();
+            this.validatePassword();
+
+            // ইমেইল এবং পাসওয়ার্ডের নিচে ত্রুটি মেসেজ দেখানো
+            const emailError = document.getElementById("emailError");
+            const passwordError = document.getElementById("passwordError");
+
+            emailError.innerHTML = this.errors.find(error => error.includes("email")) || "";
+            passwordError.innerHTML = this.errors.find(error => error.includes("Password")) || "";
+
+            if (this.errors.length === 0) {
+                alert("User registration successful");
+                // Perform registration logic (e.g., send data to server)
+            } else {
+                const errorMessages = document.getElementById("errorMessages");
+                errorMessages.innerHTML = this.errors.join("<br>");
+            }
+        }
+    }
+
+    function openDynamicWindow() {
+        const name =    document.getElementById("name").value;
+        const address = document.getElementById("address").value;
+        const gender = document.querySelector('input[name="gender"]:checked').value;
+
+        // চেকবক্স নির্বাচন
+        const courseCheckboxes = document.querySelectorAll('input[name="course"]:checked');
+        const courses = Array.from(courseCheckboxes).map(checkbox => checkbox.value);
+
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const passwordConfirmation = document.getElementById("passwordConfirmation").value;
+
+        const user = new User(name, address, gender, courses, email, password, passwordConfirmation);
+        user.registerUser();
+
+        // Open dynamic window (you can customize the window features as needed)
+        const dynamicWindow = window.open('', ' ', 'width=400,height=400');
+        dynamicWindow.document.write(`<h2>Registration Details</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Address:</strong> ${address}</p>
+        <p><strong>Gender:</strong> ${gender}</p>
+        <p><strong>Course:</strong> ${courses.join(", ")}</p>
+        <p><strong>Email:</strong> ${email}</p>`);
+    }
+</script>
+</body>
+</html>
+        
+
+
+
+

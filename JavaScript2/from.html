@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Student Admission</title>
+
+</head>
+ 
+<body>
+<form action="#" method="post" name="m" style="width:300px; height: 400px; margin:0px auto; border:1px solid rgb(228, 98, 98);
+ padding:10px;background-color: rgba(191, 33, 78, 0.411);">
+  <legend style="text-align: center; font-size: x-large;">User parsonal information</legend><br>
+  <div>Name<br/>
+  <input type="text" name="txtName" />
+  </div>
+
+  <div>Address<br/>
+  <textarea  name="txtAddress" ></textarea>
+  </div>
+  <div>Email<br/>
+    <textarea  name="txtEmail" ></textarea>
+  </div>
+  <div>Course:<br>
+    <select name="txtCourse">
+        <option value="MBA">MBA</option>
+        <option value="BBA">BBA</option>
+        <option value="CIS">CIS</option>
+        <option value="EEE">EEE</option>
+    </select>
+  </div>
+      <div>Sex<br>
+         Male<input type="radio" name="radoSex"  value="Male" />
+         Femals<input type="radio" name="radoSex"  value="  Femals" />
+         other<input type="radio" name="radoSex"  value="other" />
+      </div>
+
+      <div>Subject<br>
+         English<input type="Checkbox" value="English" name="CheckSubject" />
+         Bangla<input type="Checkbox" value="Bangla" name="CheckSubject" />
+         Math<input type="Checkbox" value="Math" name="CheckSubject" />
+      </div>
+      
+
+         
+  
+
+  <div>
+  <input type="button" onclick="dyn_window()" value="Submit" />
+  </div>
+</form>
+<script language="javascript">
+ 
+function dyn_window(){  
+
+  var title="My Title";
+  var name=document.m.txtName.value;
+  var address=document.m.txtAddress.value;
+  var email=document.m.txtEmail.value;
+  var Course=document.m.txtCourse.value;
+  var Sex ="";
+  var Subject="";
+//   check if radio button is selected and read selected value
+    for(i=0; i<document.m.rdoSex.lenght; i++){
+        if (document.m.rdoSex[i].chacked){
+            document.m.rdoSex[i].value 
+        }
+    };
+
+    // create new window here
+   
+     a=open('','','width=200px,height=200px')
+   
+   with(a.document){
+     write("<html>");
+     write("<head><title>"+title+"</title></head>");
+     write("<body>");
+     write("Name:"+name+"<br/>");
+     write("Address:"+address+"<br/>");
+     write("Email:"+email+"<br/>");
+     write("Course:"+Course+"<br/>");
+     write("<input type='button' value='Close me' onclick='self.close();' />");
+     write("<input type='button' value='Print' onclick='self.print();' />");
+     write("</body>");
+     write("</html>");
+    }
+   }// end the function 
+     
+  </script>
+  
+  </body>
+  </html>
+
+    
+  
+
+
+
+
+  
+
+
+   
+ 
+ 
+                
+
+    
+       
+    
+        
+ 
+  
+     
+    

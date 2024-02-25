@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike</title>
+</head>
+<body>
+  <script>
+      class Bike {
+        constructor()
+        {
+             this.companye="Honda";
+             this.year="1948";
+        }
+      }
+      class Vehicle extends Bike{
+        constructor(name,price){
+            super();
+              this.name=name;
+              this.price=price
+        }
+      }
+      var V = new Vehicle("Shine","70000");
+      document.write(V.company+" "+V.name+" "+V.price);
+  </script>
+</body>
+</html>

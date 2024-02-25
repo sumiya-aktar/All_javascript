@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function countsm(Arr){
+       var name =prompt("enter you name")
+        let positiveCount = 0;
+        let negetiveCount = 0;
+        let ZeroCount =0;
+        let sum =0;
+        for(let x=0; x<name.length; x++){
+               sum += name[x];
+               if (name[x]>0){
+                positiveCount++;
+               }else if(name[x]<0){
+                negetiveCount++
+               }else{
+                ZeroCount++;
+               }
+        }
+        document.write("Number of positive elements :" +positiveCount+ "<br>");
+        document.write("Number of negetive elements :" +negetiveCount+ "<br>");
+        document.write("Number of zero elements :" +ZeroCount+ "<br>");
+        document.write("Total sum :" + sum + "<br>");
+    }
+    countsm(Arr);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let number  = parseInt(prompt('Eneter your nuber'));
+        let first = 0, second = 1, nextTerm;
+        document.write("The Number series :")
+        for ( let x = 0; x <= number; x++){
+            document.write(first + " " );
+            nextTerm = first + second;
+            first = second;
+            second = nextTerm;
+        }
+    </script>
+</body>
+</html>
